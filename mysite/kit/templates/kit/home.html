@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+<title>Hello</title>
+<style>
+table,tr,td,th{border: 2px solid black; padding: 10px}
+</style>
+</head>
+
+<body>
+<h1>Hello {{l.floor_name}}</h1>
+
+<div>
+    <table>
+        <tbody>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <th>{{l.light1_name}}</th>
+            <th>{{l.light1_status}}</th>
+        </tr>
+        <tr>
+            <th>{{l.light2_name}}</th>
+            <th>{{l.light2_status}}</th>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<br>
+<hr>
+<h1>Change Status</h1>
+<div>
+<form action="change/" method="post">
+{% csrf_token %}
+<input type='radio' id='{{l.light1_name}}' value={{l.light1_name}} name='kitnum'>
+<label for='{{l.light1_name}}'>{{l.light1_name}}</label><br>
+<input type='radio' id='{{l.light2_name}}' value={{l.light2_name}} name='kitnum'>
+<label for='{{l.light2_name}}'>{{l.light2_name}}</label><br><hr>
+<input type="submit" value="change">
+</form>
+
+
+
+
+</div>
+<hr>
+{% load static%}
+<div><a href="{% static 'kit/kit.txt'%}">Check</a></div>
+</body>
+</html>
